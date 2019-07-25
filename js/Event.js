@@ -5,55 +5,92 @@ var OregonH = OregonH || {};
 
 OregonH.Event = {};
 
+class EventType {
+  constructor(type, notification, text) {
+    this.type = type;
+    this.notification = notification;
+    this.text = text;
+  }
+}
+
+class StatChange extends EventType {
+  constructor(type, notification, text, stat, value) {
+    super(type, notification, text);
+    this.stat = stat;
+    this.value = value;
+  }
+}
+
+class ShopEvent extends EventType {
+  constructor(type, notification, text, products) {
+    super(type, notification, text);
+    this.products = products;
+  }
+}
+
+function makeEvent(obj) {
+  const { type, notification, text, stat, value, products} = obj
+  switch(obj.type) {
+    case 'STAT-CHANGE':
+      return new StatChange(type, notification, text)
+    case 'ATTACK':
+      return new EventType(type, notification, stat, value, text)
+    case 'SHOP':
+      return new ShopEvent(type, notification, text, products)
+  }
+}
+
+
+// data = [
 OregonH.Event.eventTypes = [
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'crew',
     value: -3,
-    text: 'Food intoxication. Casualties: ',
+    text: 'Old candy. Crew that got stomach aches: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'crew',
     value: -4,
-    text: 'Flu outbreak. Casualties: ',
+    text: 'Bitter candy. Crew that got stomach aches: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'food',
     value: -10,
-    text: 'Worm infestation. Food lost: ',
+    text: 'Melted candy! Candy lost: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'money',
     value: -50,
-    text: 'Pick pockets steal $',
+    text: 'Your chocolate was stolen!',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'oxen',
     value: -1,
-    text: 'Ox flu outbreak. Casualties: ',
+    text: 'Ox flu outbreak. Crew that got stomach aches: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'positive',
     stat: 'food',
     value: 20,
-    text: 'Found wild berries. Food added: ',
+    text: 'Found a lollipop. Candy added: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'positive',
     stat: 'food',
     value: 20,
-    text: 'Found wild berries. Food added: ',
+    text: 'Found mints. Candy added: ',
   },
   {
     type: 'STAT-CHANGE',

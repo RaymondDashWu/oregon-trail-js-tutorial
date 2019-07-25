@@ -3,6 +3,20 @@
 // eslint-disable-next-line no-var
 var OregonH = OregonH || {};
 
+// class Game {
+//   constructor() {
+//     this.ui = new UI();
+//     this.Event = new GamepadEvent(data)
+//     ...
+//   }
+// }
+
+// cont OregonH = new Game()
+
+
+
+
+
 // constants
 OregonH.WEIGHT_PER_OX = 20;
 OregonH.WEIGHT_PER_PERSON = 2;

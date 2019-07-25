@@ -12,5 +12,14 @@
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaymondDashWu/oregon-trail-js-tutorial.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/RaymondDashWu/oregon-trail-js-tutorial/issues"
+  },
+  "homepage": "https://github.com/RaymondDashWu/oregon-trail-js-tutorial#readme"
 }

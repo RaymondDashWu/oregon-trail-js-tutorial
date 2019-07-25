@@ -1,8 +1,16 @@
 module.exports = {
-    "extends": "airbnb-base",
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
     "globals": {
-        "document": true,
-        "window": true,
-        "requestAnimationFrame": true
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
     }
 };
