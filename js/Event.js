@@ -76,7 +76,7 @@ OregonH.Event.eventTypes = [
     notification: 'negative',
     stat: 'oxen',
     value: -1,
-    text: 'Ox flu outbreak. Crew that got stomach aches: ',
+    text: 'Hit hard rock candy. Damage to wheels: ',
   },
   {
     type: 'STAT-CHANGE',
@@ -97,7 +97,7 @@ OregonH.Event.eventTypes = [
     notification: 'positive',
     stat: 'oxen',
     value: 1,
-    text: 'Found wild oxen. New oxen: ',
+    text: 'Mechanics fix your car. Car health: ',
   },
   {
     type: 'SHOP',
