@@ -18,13 +18,15 @@ class Caravan {
     this.firepower = stats.firepower;
   }
 
+  // update covered distance
   updateDistance() {
     // the closer to capacity, the slower
     const diff = this.capacity - this.weight;
     const speed = OregonH.SLOW_SPEED + diff / this.capacity * OregonH.FULL_SPEED;
     this.distance += speed;
   }
-
+  
+  // update weight and capacity
   updateWeight() {
     let droppedFood = 0;
     let droppedGuns = 0;
@@ -58,6 +60,7 @@ class Caravan {
     }
   }
 
+  // food consumption
   consumeFood() {
     this.food -= this.crew * OregonH.FOOD_PER_PERSON;
 
@@ -108,16 +111,3 @@ OregonH.Caravan = new Caravan();
 
 // init game
 OregonH.Game.init();
-
-// // update weight and capacity
-// OregonH.Caravan.updateWeight = function updateWeight() {
-
-// };
-
-// // update covered distance
-// OregonH.Caravan.updateDistance = function updateDistance() {};
-
-// // food consumption
-// OregonH.Caravan.consumeFood = function consumeFood() {
-
-// };

@@ -8,10 +8,12 @@ class UI {
 
   }
 
+  // show a notification in the message area
   notify(message, type) {
     document.getElementById('updates-area').innerHTML = `<div class="update-${type}">Day ${Math.ceil(this.caravan.day)}: ${message}</div> ${document.getElementById('updates-area').innerHTML}`;
   }
 
+  // refresh visual caravan stats
   refreshStats() {
     // Destructure some objects for easy access
     const {
@@ -44,6 +46,7 @@ class UI {
     document.getElementById('caravan').style.left = `${(380 * distance / OregonH.FINAL_DISTANCE)}px`;
   }
 
+  // show attack
   showAttack(firepower, gold) {
     const attackDiv = document.getElementById('attack');
     attackDiv.classList.remove('hidden');
@@ -66,7 +69,8 @@ class UI {
       this.attackInitiated = true;
     }
   }
-
+  
+  // fight
   fight() {
     // console.log('Fight!');
 
@@ -94,6 +98,7 @@ class UI {
     this.game.resumeJourney();
   }
 
+  // runing away from enemy
   runaway() {
     // console.log('runway!')
 
@@ -121,6 +126,7 @@ class UI {
     this.game.resumeJourney();
   }
 
+  // show shop
   showShop(products) {
     // get shop area
     const shopDiv = document.getElementById('shop');
@@ -161,6 +167,7 @@ class UI {
     }
   }
 
+  // buy product
   buyProduct(product) {
     // check we can afford it
     if (product.price > OregonH.UI.caravan.money) {
@@ -185,35 +192,3 @@ class UI {
 
 
 OregonH.UI = new UI();
-
-// show a notification in the message area
-// OregonH.UI.notify = function notify(message, type) {
-// };
-
-// refresh visual caravan stats
-// OregonH.UI.refreshStats = function refreshStats() {};
-
-// show attack
-// OregonH.UI.showAttack = function showAttack(firepower, gold) {
-
-// };
-
-// fight
-// OregonH.UI.fight = function fight() {
-
-// };
-
-// // runing away from enemy
-// OregonH.UI.runaway = function runaway() {
-
-// };
-
-// show shop
-// OregonH.UI.showShop = function showShop(products) {
-
-// };
-
-// buy product
-// OregonH.UI.buyProduct = function buyProduct(product) {
-
-// };
