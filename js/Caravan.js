@@ -4,8 +4,8 @@
 var OregonH = OregonH || {};
 
 class Caravan {
-  constructor() {
-
+  constructor(game) {
+    this.game = game;
   }
 
   init(stats) {

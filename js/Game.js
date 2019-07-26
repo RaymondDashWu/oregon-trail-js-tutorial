@@ -1,25 +1,35 @@
 // Game.js
 
 // eslint-disable-next-line no-var
-var OregonH = OregonH || {};
 
 class Game {
   constructor() {
-    this.ui = new UI();
-    // this.eventManager = new Event(); // TODO: Shouldn't this be broken?
-    this.caravan = new Caravan();
+    this.init()
   }
-
   // initiate the game
   init() {
     // reference ui
-    this.ui = OregonH.UI;
-
+    this.ui = new UI(this);
     // reference event manager
-    this.eventManager = OregonH.Event;
-
+    this.eventManager = new GameEvent(this, eventTypes);
     // setup caravan
-    this.caravan = OregonH.Caravan;
+    this.caravan = new Caravan(this);
+
+    // constants
+    this.WEIGHT_PER_OX = 20;
+    this.WEIGHT_PER_PERSON = 2;
+    this.FOOD_WEIGHT = 0.6;
+    this.FIREPOWER_WEIGHT = 5;
+    this.GAME_SPEED = 800;
+    this.DAY_PER_STEP = 0.2;
+    this.FOOD_PER_PERSON = 0.02;
+    this.FULL_SPEED = 5;
+    this.SLOW_SPEED = 3;
+    this.FINAL_DISTANCE = 1000;
+    this.EVENT_PROBABILITY = 0.15;
+    this.ENEMY_FIREPOWER_AVG = 5;
+    this.ENEMY_GOLD_AVG = 50;
+
     this.caravan.init({
       day: 0,
       distance: 0,
@@ -68,7 +78,7 @@ class Game {
     const progress = timestamp - this.previousTime;
 
     // game update
-    if (progress >= OregonH.GAME_SPEED) {
+    if (progress >= this.GAME_SPEED) {
       this.previousTime = timestamp;
       this.updateGame();
     }
@@ -80,7 +90,7 @@ class Game {
   // update game stats
   updateGame() {
     // day update
-    this.caravan.day += OregonH.DAY_PER_STEP;
+    this.caravan.day += this.DAY_PER_STEP;
 
     // food consumption
     this.caravan.consumeFood();
@@ -110,14 +120,14 @@ class Game {
     }
 
     // check win game
-    if (this.caravan.distance >= OregonH.FINAL_DISTANCE) {
+    if (this.caravan.distance >= this.FINAL_DISTANCE) {
       this.ui.notify('You have returned home!', 'positive');
       this.gameActive = false;
       return;
     }
 
     // random events
-    if (Math.random() <= OregonH.EVENT_PROBABILITY) {
+    if (Math.random() <= this.EVENT_PROBABILITY) {
       this.eventManager.generateEvent();
     }
   }
@@ -134,24 +144,4 @@ class Game {
   }
 }
 
-// constants
-OregonH.WEIGHT_PER_OX = 20;
-OregonH.WEIGHT_PER_PERSON = 2;
-OregonH.FOOD_WEIGHT = 0.6;
-OregonH.FIREPOWER_WEIGHT = 5;
-OregonH.GAME_SPEED = 800;
-OregonH.DAY_PER_STEP = 0.2;
-OregonH.FOOD_PER_PERSON = 0.02;
-OregonH.FULL_SPEED = 5;
-OregonH.SLOW_SPEED = 3;
-OregonH.FINAL_DISTANCE = 1000;
-OregonH.EVENT_PROBABILITY = 0.15;
-OregonH.ENEMY_FIREPOWER_AVG = 5;
-OregonH.ENEMY_GOLD_AVG = 50;
-
-OregonH.Game = {};
-
 OregonH.Game = new Game();
-
-// init game
-OregonH.Game.init();

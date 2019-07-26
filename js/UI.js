@@ -1,11 +1,10 @@
 // UI.js
 
 // eslint-disable-next-line no-var
-var OregonH = OregonH || {};
 
 class UI {
-  constructor() {
-
+  constructor(game) {
+    this.game = game;
   }
 
   // show a notification in the message area
@@ -43,7 +42,7 @@ class UI {
     document.getElementById('stat-weight').innerHTML = `${ceil(weight)}/${capacity}`;
 
     // update caravan position
-    document.getElementById('caravan').style.left = `${(380 * distance / OregonH.FINAL_DISTANCE)}px`;
+    document.getElementById('caravan').style.left = `${(380 * distance / this.FINAL_DISTANCE)}px`;
   }
 
   // show attack
@@ -143,9 +142,9 @@ class UI {
         if (target.tagName === 'BUTTON') {
           // resume journey
           shopDiv.classList.add('hidden');
-          OregonH.UI.game.resumeJourney();
+          this.game.resumeJourney();
         } else if (target.tagName === 'DIV' && target.className.match(/product/)) {
-          OregonH.UI.buyProduct({
+          this.buyProduct({
             item: target.getAttribute('data-item'),
             qty: target.getAttribute('data-qty'),
             price: target.getAttribute('data-price'),
@@ -170,25 +169,22 @@ class UI {
   // buy product
   buyProduct(product) {
     // check we can afford it
-    if (product.price > OregonH.UI.caravan.money) {
-      OregonH.UI.notify('Not enough money', 'negative');
+    if (product.price > this.game.caravan.money) {
+      this.notify('Not enough money', 'negative');
       return false;
     }
 
-    OregonH.UI.caravan.money -= product.price;
+    this.game.caravan.money -= product.price;
 
-    OregonH.UI.caravan[product.item] += +product.qty;
+    this.game.caravan[product.item] += +product.qty;
 
-    OregonH.UI.notify(`Bought ${product.qty} x ${product.item}`, 'positive');
+    this.notify(`Bought ${product.qty} x ${product.item}`, 'positive');
 
     // update weight
-    OregonH.UI.caravan.updateWeight();
+    this.game.caravan.updateWeight();
 
     // update visuals
-    OregonH.UI.refreshStats();
+    this.refreshStats();
     return true;
   }
 }
-
-
-OregonH.UI = new UI();

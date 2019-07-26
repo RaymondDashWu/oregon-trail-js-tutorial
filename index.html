@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <body>
-    <h1>Candy Land Trails</h1>
-    <p>A totally accurate simulation of pioneer life on the sweetest trail ever.</p>
+    <div id="banner">
+      <h1>Candy Land Trails</h1>
+      <p>A totally accurate simulation of pioneer life on the sweetest trail ever.</p>
+    </div>
     <div id="home"></div>
     <div id="journey">
      
@@ -69,27 +71,5 @@ Challenges
     <script src="js/Caravan.js"></script>
     <script src="js/UI.js"></script>
     <script src="js/Game.js"></script>
-
-    <script>
-      class Apple {
-        constructor(size, color) {
-          this.size = size
-          this.color = color
-        }
-      }
-
-      class Pastry extends Apple {
-        constructor(crispiness) {
-          super(21, 'chocolate')
-          this.crispiness = crispiness
-        }
-      }
-
-      const apple = new Apple(33, 'red')
-      console.log(apple)
-    
-      const biscotti = new Pastry(999)
-      console.log(biscotti)
-    </script>
   </body>
 </html>

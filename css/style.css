@@ -7,13 +7,17 @@ body {
   margin: 0;
   border: 0;
   height: 100%;
-  overflow: hidden;
   font-family: Helvetica;
   font-size: 18px;
+  background-color: rgb(80, 140, 230);
 }
  
 .hidden {
   display: none;
+}
+
+#banner {
+  background-color: aliceblue;
 }
  
 #home {
@@ -27,7 +31,6 @@ body {
   'update stats event'
   'update stats event';
   height: 100%;
-  background-color: rgb(80, 140, 230);
 }
  
 #event {
