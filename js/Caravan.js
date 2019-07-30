@@ -13,7 +13,7 @@ class Caravan {
     this.distance = stats.distance;
     this.crew = stats.crew;
     this.food = stats.food;
-    this.oxen = stats.oxen;
+    this.carHealth = stats.carHealth;
     this.money = stats.money;
     this.firepower = stats.firepower;
   }
@@ -32,7 +32,7 @@ class Caravan {
     let droppedGuns = 0;
 
     // how much can the caravan carry
-    this.capacity = this.oxen * OregonH.WEIGHT_PER_OX + this.crew * OregonH.WEIGHT_PER_PERSON;
+    this.capacity = this.carHealth * OregonH.WEIGHT_PER_OX + this.crew * OregonH.WEIGHT_PER_PERSON;
 
     // how much weight do we currently have
     this.weight = this.food * OregonH.FOOD_WEIGHT + this.firepower * OregonH.FIREPOWER_WEIGHT;
@@ -101,7 +101,7 @@ OregonH.Game.init = function init() {
     distance: 0,
     crew: 30,
     food: 80,
-    oxen: 2,
+    carHealth: 2,
     money: 300,
     firepower: 2,
   });

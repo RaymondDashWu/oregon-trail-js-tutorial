@@ -19,7 +19,7 @@ class UI {
       day,
       distance,
       crew,
-      oxen,
+      carHealth,
       food,
       money,
       firepower,
@@ -35,14 +35,14 @@ class UI {
     document.getElementById('stat-day').innerHTML = `${ceil(day)}`; // Math.ceil(this.caravan.day);
     document.getElementById('stat-distance').innerHTML = `${floor(distance)}`;
     document.getElementById('stat-crew').innerHTML = `${crew}`;
-    document.getElementById('stat-oxen').innerHTML = `${oxen}`;
+    document.getElementById('stat-oxen').innerHTML = `${carHealth}`;
     document.getElementById('stat-food').innerHTML = `${ceil(food)}`;
     document.getElementById('stat-money').innerHTML = `${money}`;
     document.getElementById('stat-firepower').innerHTML = `${firepower}`;
     document.getElementById('stat-weight').innerHTML = `${ceil(weight)}/${capacity}`;
 
     // update caravan position
-    document.getElementById('caravan').style.left = `${(380 * distance / this.FINAL_DISTANCE)}px`;
+    document.getElementById('caravan').style.left = `${(380 * distance / this.game.FINAL_DISTANCE)}px`;
   }
 
   // show attack

@@ -35,7 +35,7 @@ class Game {
       distance: 0,
       crew: 30,
       food: 80,
-      oxen: 2,
+      carHealth: 2,
       money: 300,
       firepower: 2,
     });

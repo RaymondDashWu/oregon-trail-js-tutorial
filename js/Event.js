@@ -75,7 +75,7 @@ const eventTypes = [
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
-    stat: 'oxen',
+    stat: 'carHealth',
     value: -1,
     text: 'Hit hard rock candy. Damage to wheels: ',
   },
@@ -96,7 +96,7 @@ const eventTypes = [
   {
     type: 'STAT-CHANGE',
     notification: 'positive',
-    stat: 'oxen',
+    stat: 'carHealth',
     value: 1,
     text: 'Mechanics fix your car. Car health: ',
   },
@@ -106,7 +106,7 @@ const eventTypes = [
     text: 'You have found a shop',
     products: [
       { item: 'food', qty: 20, price: 50 },
-      { item: 'oxen', qty: 1, price: 200 },
+      { item: 'carHealth', qty: 1, price: 200 },
       { item: 'firepower', qty: 2, price: 50 },
       { item: 'crew', qty: 5, price: 80 },
     ],
@@ -117,7 +117,7 @@ const eventTypes = [
     text: 'You have found a shop',
     products: [
       { item: 'food', qty: 30, price: 50 },
-      { item: 'oxen', qty: 1, price: 200 },
+      { item: 'carHealth', qty: 1, price: 200 },
       { item: 'firepower', qty: 2, price: 20 },
       { item: 'crew', qty: 10, price: 80 },
     ],
@@ -128,7 +128,7 @@ const eventTypes = [
     text: 'Smugglers sell various goods',
     products: [
       { item: 'food', qty: 20, price: 60 },
-      { item: 'oxen', qty: 1, price: 300 },
+      { item: 'carHealth', qty: 1, price: 300 },
       { item: 'firepower', qty: 2, price: 80 },
       { item: 'crew', qty: 5, price: 60 },
     ],
