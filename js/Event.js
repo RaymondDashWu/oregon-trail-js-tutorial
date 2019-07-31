@@ -1,10 +1,6 @@
 // Event.js
 
 // eslint-disable-next-line no-var
-var OregonH = OregonH || {};
-
-OregonH.Event = {};
-
 class EventType {
   constructor(type, notification, text) {
     this.type = type;
@@ -28,22 +24,25 @@ class ShopEvent extends EventType {
   }
 }
 
-function makeEvent(obj) {
-  const { type, notification, text, stat, value, products} = obj
-  switch(obj.type) {
-    case 'STAT-CHANGE':
-      return new StatChange(type, notification, text)
-    case 'ATTACK':
-      return new EventType(type, notification, stat, value, text)
-    case 'SHOP':
-      return new ShopEvent(type, notification, text, products)
+class Event {
+  constructor() {
+    this.game = game;
+  }
+
+  makeEvent(obj) {
+    const { type, notification, text, stat, value, products} = obj
+    switch(obj.type) {
+      case 'STAT-CHANGE':
+        return new StatChange(type, notification, text)
+      case 'ATTACK':
+        return new EventType(type, notification, stat, value, text)
+      case 'SHOP':
+        return new ShopEvent(type, notification, text, products)
+    }
   }
 }
 
-
-// data = [
 const eventTypes = [
-// OregonH.Event.eventTypes = [
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
@@ -222,8 +221,8 @@ class GameEvent {
   }
   // prepare an attack event
   attackEvent() {
-    const firepower = Math.round((0.7 + 0.6 * Math.random()) * OregonH.ENEMY_FIREPOWER_AVG);
-    const gold = Math.round((0.7 + 0.6 * Math.random()) * OregonH.ENEMY_GOLD_AVG);
+    const firepower = Math.round((0.7 + 0.6 * Math.random()) * this.game.ENEMY_FIREPOWER_AVG);
+    const gold = Math.round((0.7 + 0.6 * Math.random()) * this.game.ENEMY_GOLD_AVG);
   
     this.ui.showAttack(firepower, gold);
   }

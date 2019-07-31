@@ -14,7 +14,7 @@ class Game {
     this.eventManager = new GameEvent(this, eventTypes);
     // setup caravan
     this.caravan = new Caravan(this);
-
+    
     // constants
     this.WEIGHT_PER_OX = 20;
     this.WEIGHT_PER_PERSON = 2;
@@ -144,4 +144,4 @@ class Game {
   }
 }
 
-OregonH.Game = new Game();
+new Game();
